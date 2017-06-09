@@ -1,17 +1,29 @@
-Hadoop i jego "wielkie dane"
-===
-[Bydgoszcz Java User Group](http://bydgoszcz.jug.pl/)
-
 Włodzimierz Kozłowski
 
-Kilka słów o tym czym jest *Hadoop*, pierwszy “Hello world” w *MapReduce* i do czego nam *HDFS*. Jak dostać się do danych, które “mają miliardy wierszy” a my nadal jesteśmy silnie przywiązani do *SQL*. Pojawi się *Hive*, *HBase*, *Apache Phoenix* i *Kundera*. Wszystko to nie z perspektywy eksperta, a programisty, który próbuje się w tym ogarnąć.
+Hadoop i jego "wielkie dane"
+===
+[Bydgoszcz Java User Group](http://bydgoszcz.jug.pl/) meetup#9
 
-### MapReduce
+Kilka słów o tym czym jest *Hadoop,* pierwszy “Hello world” w *MapReduce* i do czego nam *HDFS.*
+Jak dostać się do danych, które “mają miliardy wierszy” a my nadal jesteśmy silnie przywiązani do *SQL.*
+Pojawi się *Hive, HBase, Apache Phoenix* i *Kundera.*
+Wszystko to nie z perspektywy eksperta, a programisty, który próbuje się w tym ogarnąć.
+
+```
+# /etc/hosts
+# c:\Windows\System32\drivers\etc\hosts
+127.0.0.1       sandbox.hortonworks.com
+```
+
+### HDFS i MapReduce
 
 pliki wejściowe 
 ```
+#lista plików lokalnych
+ls
 hdfs dfs -rm -r -skipTrash /user/root
 hdfs dfs -mkdir /user/root
+# lista plików na HDFS
 hdfs dfs -ls /
 
 hdfs dfs -put dane/lektury

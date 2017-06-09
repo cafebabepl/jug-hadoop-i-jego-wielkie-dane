@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.UUID;
 
 public class HBasePhoenixSample {
 
@@ -31,12 +32,20 @@ public class HBasePhoenixSample {
              * i
              * SELECT count(*) FROM "odczyty"
              */
+
             // http://phoenix.apache.org/language/
+            // https://phoenix.apache.org/language/functions.html
+
+            // DDL
+            // utworzenie widoku na istniejącej tabeli HBase
             //stmt.execute("DROP VIEW IF EXISTS odczyty");
             stmt.executeUpdate("CREATE VIEW IF NOT EXISTS odczyty (pk VARCHAR PRIMARY KEY, cf.nrl VARCHAR, cf.zuzycie VARCHAR)");
+
+            // DML
+            // a na tabeli moglibyśmy wykonać INSERT/UPDATE
+            // stmt.execute(String.format("UPSERT INTO odczyty VALUES ('%s', '%s', '%s')", UUID.randomUUID().toString(), "nr 17", "64"));
             print(stmt.executeQuery("SELECT count(*) FROM odczyty"));
             print(stmt.executeQuery("SELECT * FROM odczyty WHERE nrl = 'nr 17'"));
-            // https://phoenix.apache.org/language/functions.html
             print(stmt.executeQuery("SELECT sum(to_number(zuzycie)) AS zuzycie FROM odczyty WHERE nrl = 'nr 17'"));
         }
     }
